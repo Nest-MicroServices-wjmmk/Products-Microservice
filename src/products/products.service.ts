@@ -19,6 +19,7 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
     const reset = '\x1b[33m';
     this.logger.log(`Database Connected ${reset}+${duration}ms`)
   }
+
   create(createProductDto: CreateProductDto) {
     return this.product.create({
       data: createProductDto
