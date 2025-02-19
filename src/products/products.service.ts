@@ -28,7 +28,6 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
 
   async findAll(pagination: PaginationDto) { 
     const { page, limit } = pagination;
-
     const totalPages = await this.product.count({ where: { available: true} });
     const lastPage = Math.ceil(totalPages/limit);
 
@@ -54,6 +53,7 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
 
     if(!product) {
       throw new RpcException(`Product with id: ➡${id}⬅ not found.`);
+      //throw new NotFoundException(`Product with id: ➡${id}⬅ not found.`);
     }
 
     return product;
@@ -62,7 +62,6 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
   async update(id: number, updateProductDto: UpdateProductDto) {
 
     const { id: __, ...data } = updateProductDto;
-
     await this.findOne(id);
 
     return this.product.update({
