@@ -16,7 +16,7 @@ const { error, value } = envSchema.validate(process.env);
 
 if(error) throw new Error(`Config validation error: ${error.message}`);
 
-const envVars: EnvVars = value; //Una forma de validar la variable (value) en la destucturacion
+const envVars: EnvVars = value; //Una forma de validar (value) en la destucturacion
 
 export const envs = { 
     port: envVars.PORT,
