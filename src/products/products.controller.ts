@@ -42,4 +42,10 @@ export class ProductsController {
   remove(@Payload('id') id: string) {
     return this.productsService.remove(+id);
   }
+
+  // Este endpoint valida que los productos existan en la base de datos para ser insertados en una orden.
+  @MessagePattern({ cmd: 'validate_products' })
+  validateProduct(@Payload() ids: number[]) {
+    return this.productsService.validateProducts(ids);
+  }
 }
