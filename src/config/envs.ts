@@ -16,7 +16,7 @@ const envSchema = joi.object({
 
 const { error, value } = envSchema.validate({ 
     ...process.env,
-    NATS_SERVERS: process.env.NAST_SERVERS?.split(',')
+    NATS_SERVERS: process.env.NATS_SERVERS?.split(',')
 });
 
 if(error) throw new Error(`Config validation error: ${error.message}`);
