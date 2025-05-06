@@ -15,8 +15,6 @@ COPY . .
 # Definir variable de entorno dentro del contenedor
 ENV DATABASE_URL=${DATABASE_URL}
 
-RUN npx prisma generate
-
 # Aplicar migraciones (esto usa la DATABASE_URL del .env)
 RUN --mount=type=secret,id=DATABASE_URL npx prisma migrate deploy || echo "Migraciones no aplicadas"
 
